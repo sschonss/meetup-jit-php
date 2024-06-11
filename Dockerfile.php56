@@ -1,0 +1,4 @@
+FROM php:5.6-fpm
+COPY ./index.php /var/www/html/index.php
+RUN echo "memory_limit=512M" > /usr/local/etc/php/php.ini
+WORKDIR /var/www/html

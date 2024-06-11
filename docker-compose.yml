@@ -1,0 +1,53 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx-container
+    ports:
+      - "1000:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/server.conf
+    depends_on:
+      - php56
+      - php74
+      - php80-nojit
+      - php80-jit
+  php56:
+    build:
+      context: .
+      dockerfile: Dockerfile.php56
+    container_name: php56-container
+    working_dir: /var/www/html
+    ports:
+      - "8000:80"
+    command: php -S 0.0.0.0:80
+
+  php74:
+    build:
+      context: .
+      dockerfile: Dockerfile.php74
+    container_name: php74-container
+    working_dir: /var/www/html
+    ports:
+      - "8001:80"
+    command: php -S 0.0.0.0:80
+
+  php80-nojit:
+    build:
+      context: .
+      dockerfile: Dockerfile.php80-nojit
+    container_name: php80-nojit-container
+    working_dir: /var/www/html
+    ports:
+      - "8002:80"
+    command: php -S 0.0.0.0:80
+
+  php80-jit:
+    build:
+      context: .
+      dockerfile: Dockerfile.php80-jit
+    container_name: php80-jit-container
+    working_dir: /var/www/html
+    ports:
+      - "8003:80"
+    command: php -S 0.0.0.0:80
