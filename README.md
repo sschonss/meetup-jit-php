@@ -77,4 +77,62 @@ mysql_close($conn);
 ?>
 ```
 
-## PHP 4 (2000)
+## PHP 5 (2004)
+
+Vamos pular a versão 4 do PHP, pois ela foi lançada em 2000 e não teve muito sucesso. Em 2004, foi lançada a versão 5 do PHP, que introduziu muitas melhorias em relação à versão anterior.
+
+A versão mais recente do PHP 5 é a 5.6, que foi lançada em 2014. Ela inclui muitas melhorias de desempenho e segurança, e é amplamente utilizada em servidores web em todo o mundo.
+
+Agora era possível usar o PDO (PHP Data Objects) para se conectar ao banco de dados, o que era mais seguro e mais fácil de usar do que as funções mysql\_\*.
+
+A váriva superglobal $\_SESSION foi introduzida para gerenciar sessões de usuário.
+
+A função ´split()´ foi removida, e deu lugar a função ´explode()´.
+
+Sem contar as melhorias de desempenho e segurança.
+
+O auge da popularidade do PHP foi durante essa época, e muitos sites populares, como o Facebook, foram construídos com PHP, sem contar os inúmeros sites feitos por CMSs (Content Management Systems) como o WordPress, Joomla e Drupal.
+
+## PHP 7 (2015)
+
+Em 2015, foi lançada a versão 7 do PHP, que introduziu muitas melhorias em relação à versão anterior. A versão mais recente do PHP 7 é a 7.4, que foi lançada em 2019.
+
+As 3 principais melhorias do PHP 7 foram:
+
+1. **Desempenho**: O PHP 7 é muito mais rápido do que as versões anteriores, graças ao novo interpretador Zend Engine 3.0, que foi reescrito do zero para ser mais eficiente.
+
+2. **Tipo de declaração**: O PHP 7 introduziu a declaração de tipo escalar, que permite que os desenvolvedores especifiquem o tipo de dados que uma função deve aceitar e retornar.
+
+3. **Novos operadores**: O PHP 7 introduziu novos operadores, como o operador de nave espacial (<=>) e o operador de coalescência nula (??), que tornam o código mais conciso e legível.
+
+> O operador de nave espacial (<=>) é usado para comparar dois valores. Ele retorna 0 se os valores forem iguais, 1 se o primeiro valor for maior e -1 se o segundo valor for maior.
+
+## PHP 8 (2020)
+
+Em 2020, foi lançada a versão 8 do PHP, que introduziu muitas melhorias em relação à versão anterior. A versão mais recente do PHP 8 é a 8.0, que foi lançada em 2020.
+
+Segue 8 topicos rapidos sobre o PHP 8:
+
+1. **Atribuições por referência**: Agora é possível atribuir por referência ao criar uma nova variável.
+
+2. **Operador de união nula**: O operador de união nula (??) agora pode ser encadeado.
+
+3. **Operador de atribuição de coalescência nula**: O operador de atribuição de coalescência nula (??=) foi introduzido.
+
+4. **Argumentos nomeados**: Agora é possível passar argumentos para funções por nome.
+
+5. **Argumentos de tipo variável**: Agora é possível passar um número variável de argumentos para funções.
+
+6. **Tipos de retorno**: Agora é possível especificar o tipo de retorno de uma função.
+
+7. **Throw**: Agora é possível lançar uma exceção sem especificar a exceção.
+
+8. **Funções de fábrica**: Agora é possível criar funções de fábrica para criar objetos.
+
+Mais algumas melhorias:
+
+- **JIT (Just-In-Time)**: O PHP 8 introduziu o JIT (Just-In-Time) compiler, que compila o código PHP em código de máquina nativo, o que melhora significativamente o desempenho do PHP.
+
+- **Union Types**: O PHP 8 introduziu os tipos de união, que permitem que uma variável aceite mais de um tipo de dados.
+
+- **Named Arguments**: O PHP 8 introduziu os argumentos nomeados, que permitem que os desenvolvedores especifiquem os argumentos de uma função por nome, em vez de por posição.

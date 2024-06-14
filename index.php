@@ -1,11 +1,12 @@
 <?php
 set_time_limit(0);
 
-function generateRandomName() {
+function generateRandomName()
+{
     $characters = 'abcdefghijklmnopqrstuvwxyz';
     $name = '';
     for ($i = 0; $i < 10; $i++) {
-        $name .= $characters[rand(0, 25)]; 
+        $name .= $characters[rand(0, 25)];
     }
     $lastName = '';
     for ($i = 0; $i < 10; $i++) {
@@ -15,7 +16,8 @@ function generateRandomName() {
     return ucfirst($name) . ' ' . ucfirst($lastName);
 }
 
-function generateRandomEmail($name) {
+function generateRandomEmail($name)
+{
     $domains = [
         "example.com", "test.com", "demo.com", "mail.com", "domain.com",
         "service.com", "webmail.com", "provider.com", "email.com", "site.com",
@@ -27,7 +29,8 @@ function generateRandomEmail($name) {
     return $namePart . "@" . $domains[array_rand($domains)];
 }
 
-function generateRandomNumber() {
+function generateRandomNumber()
+{
     $dd = rand(11, 99);
     $number = '';
     for ($i = 0; $i < 9; $i++) {
@@ -38,11 +41,12 @@ function generateRandomNumber() {
     return '(' . $dd . ') ' . $number;
 }
 
-function generateUUID() {
+function generateUUID()
+{
     $characters = '0123456789abcdef';
     $uuid = '';
     for ($i = 0; $i < 32; $i++) {
-        $uuid .= $characters[rand(0, 15)]; 
+        $uuid .= $characters[rand(0, 15)];
     }
 
     $uuid = substr($uuid, 0, 8) . '-' . substr($uuid, 8, 4) . '-' . substr($uuid, 12, 4) . '-' . substr($uuid, 16, 4) . '-' . substr($uuid, 20, 12);
@@ -54,15 +58,16 @@ $parts = explode('/', trim($request, '/'));
 
 if (count($parts) == 2 && $parts[0] == 'csv' && is_numeric($parts[1])) {
     $numLines = (int)$parts[1];
-    
+
     $startTime = microtime(true);
-    
+
     $response = [
         'success' => true,
-        'message' => 'Arquivo CSV gerado com sucesso.',
-        'executionTime (s)' => 0,
-        'phpVersion' => phpversion(),
-        'numLines' => $numLines
+        'message' => 'CSV File generated successfully.',
+        'execution_time_s' => 0,
+        'php_version' => phpversion(),
+        'lines' => $numLines,
+        'preview_data' => []
     ];
 
     for ($i = 0; $i < $numLines; $i++) {
@@ -71,20 +76,32 @@ if (count($parts) == 2 && $parts[0] == 'csv' && is_numeric($parts[1])) {
         $email = generateRandomEmail($name);
         $number = generateRandomNumber();
     }
-    
+
+    for ($i = 0; $i < 5; $i++) {
+        $uuid = generateUUID();
+        $name = generateRandomName();
+        $email = generateRandomEmail($name);
+        $number = generateRandomNumber();
+        $response['preview_data'][] = [
+            'uuid' => $uuid,
+            'name' => $name,
+            'email' => $email,
+            'number' => $number
+        ];
+    }
+
     $endTime = microtime(true);
     $executionTime = $endTime - $startTime;
-    $response['executionTime (s)'] = $executionTime;
+    $response['execution_time_s'] = $executionTime;
 
     header('Content-Type: application/json');
     echo json_encode($response);
 } else {
     $response = [
         'success' => false,
-        'message' => 'URL inválida. Use o formato /csv/{numero}.'
+        'message' => 'Invalid URL. Please use /csv/{count} where {count} is the number of lines to generate.',
     ];
 
     header('Content-Type: application/json');
     echo json_encode($response);
 }
-?>

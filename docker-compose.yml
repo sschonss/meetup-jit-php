@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   nginx:
     image: nginx:latest
@@ -12,6 +12,10 @@ services:
       - php74
       - php80-nojit
       - php80-jit
+      - php81-jit
+      - php82-jit
+      - php83-jit
+
   php56:
     build:
       context: .
@@ -50,4 +54,34 @@ services:
     working_dir: /var/www/html
     ports:
       - "8003:80"
+    command: php -S 0.0.0.0:80
+
+  php81-jit:
+    build:
+      context: .
+      dockerfile: Dockerfile.php81-jit
+    container_name: php81-jit-container
+    working_dir: /var/www/html
+    ports:
+      - "8004:80"
+    command: php -S 0.0.0.0:80
+
+  php82-jit:
+    build:
+      context: .
+      dockerfile: Dockerfile.php82-jit
+    container_name: php82-jit-container
+    working_dir: /var/www/html
+    ports:
+      - "8005:80"
+    command: php -S 0.0.0.0:80
+
+  php83-jit:
+    build:
+      context: .
+      dockerfile: Dockerfile.php83-jit
+    container_name: php83-jit-container
+    working_dir: /var/www/html
+    ports:
+      - "8006:80"
     command: php -S 0.0.0.0:80
